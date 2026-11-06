@@ -55,8 +55,7 @@ def conga_nodes(context) -> list:
         if arg("pose_source") == "odom":
             actions.append(Node(
                 package="tf2_ros", executable="static_transform_publisher", name=f"world_to_{ns}_odom",
-                arguments=["--x", str(x), "--y", str(y), "--yaw", str(yaw),
-                           "--frame-id", "world", "--child-frame-id", f"{ns}/odom"],
+                arguments=[str(x), str(y), "0.0", str(yaw), "0.0", "0.0", "world", f"{ns}/odom"],
                 parameters=[{"use_sim_time": sim_time}],
             ))
         if i == 0:
